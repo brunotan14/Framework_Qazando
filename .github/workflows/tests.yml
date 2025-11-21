@@ -35,13 +35,6 @@ jobs:
       - name: Setup ChromeDriver
         uses: nanasess/setup-chromedriver@v2
 
-      # verificar versões (opcional)
-      - name: Check Chrome version
-        run: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" --version
-
-      - name: Check ChromeDriver version
-        run: chromedriver --version
-
       # executar testes
       - name: Run tests
         run: mvn test -Dtest=RunCucumberTest -Dbrowser=chrome-ci
