@@ -124,6 +124,9 @@ Verificar o resultado no console ou no relatório HTML.
 Para visualizar as execuções: mvn test -Dtest=RunCucumberTest -Dbrowser=chrome  
 Para rodar no modo Headless: mvn test -Dtest=RunCucumberTest -Dbrowser=chrome-ci
 
+Caso prefira testar as execuções no firefox, só trocar o chrome pelo firefox.
+
+
 📊 Relatórios de Teste
 
 Após a execução dos testes, o relatório HTML é gerado automaticamente na pasta:
@@ -211,4 +214,4 @@ mvn test -Dcucumber.filter.tags="@cadastro"	Executa apenas os testes marcados co
 
 Bruno Nathan — QA | Analista de Testes 
 🔗 Projeto desenvolvido para fins educacionais e de prática em automação de testes com BDD.
-💬 Tecnologias: Java · Selenium · Cucumber · Gherkin · Maven
+💬 Tecnologias: Java · Selenium · Cucumber · Gherkin · Maven · Github Actions
