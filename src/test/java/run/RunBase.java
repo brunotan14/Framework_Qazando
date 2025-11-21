@@ -28,7 +28,12 @@ public class RunBase {
                 break;
             case "chrome-ci":
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("--headless=new"); // Headless moderno e estável, antes estava em modo obsoleto desde o chrome 109
+                chromeOptions.addArguments("--window-size=1920,1080"); // ESSENCIAL!
+                chromeOptions.addArguments("--disable-gpu");
+                chromeOptions.addArguments("--no-sandbox");
+                chromeOptions.addArguments("--disable-dev-shm-usage");
+                chromeOptions.addArguments("--remote-allow-origins=*");
                 driver = new ChromeDriver(chromeOptions);
                 break;
             case "firefox":

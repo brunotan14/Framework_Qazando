@@ -37,7 +37,7 @@ public class commands extends RunCucumberTest {
         System.out.println("###################################");
         try {
             System.out.println("******** Vai preencher o campo" + element);
-            waitElementBePresent(element, 5);
+            waitElementBePresent(element, 10);
             getDriver().findElement(element).sendKeys(value);
             System.out.println("******** preenceu o campo" + element);
         } catch(Exception error){
@@ -51,7 +51,7 @@ public class commands extends RunCucumberTest {
         String actualMessage = "";
         try{
             System.out.println("******* Procurando pela mensagem");
-            waitElementBePresent(element, 5);
+            waitElementBePresent(element, 15);
             actualMessage = getDriver().findElement(element).getText();
             Assert.assertEquals(expectedMessage, actualMessage);
             System.out.println("******* Mensagem:" + expectedMessage + " validada com sucesso!");
