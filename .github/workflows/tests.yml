@@ -1,0 +1,47 @@
+name: Smoke Test - PR
+
+on:
+  push:
+    branches:
+      - bruno
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  RunTest:
+    runs-on: windows-latest
+
+    steps:
+      # clonar projeto
+      - name: Clonar o projeto
+        uses: actions/checkout@v5
+
+      # instalar o java
+      - name: Install Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: "24"
+          distribution: "temurin"
+          cache: maven
+
+      # instalar Google Chrome (Windows)
+      - name: Install latest Google Chrome
+        run: |
+          powershell -Command "Invoke-WebRequest https://dl.google.com/chrome/install/latest/chrome_installer.exe -OutFile chrome_installer.exe"
+          start /wait chrome_installer.exe /silent /install
+
+      # instalar ChromeDriver compatível
+      - name: Setup ChromeDriver
+        uses: nanasess/setup-chromedriver@v2
+
+      # verificar versões (opcional)
+      - name: Check Chrome version
+        run: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" --version
+
+      - name: Check ChromeDriver version
+        run: chromedriver --version
+
+      # executar testes
+      - name: Run tests
+        run: mvn test -Dtest=RunCucumberTest -Dbrowser=chrome-ci

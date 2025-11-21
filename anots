@@ -1,0 +1,39 @@
+Anotações importantes sobre a estrutura dos arquivos no selenium:
+
+1. Os arquivos steps sempre irão herdar a classe do runner, que é onde os testes são executados;
+2. Alguns arquivos das pages, que é uma maneira de deixar o projeto melhor estruturado.Irão usar extends da classe utils do support;
+3. No arquivo do runner, é recomendado criar uma instância do WebDriver através de um método static;
+4. Em cada um das classes das pages, é necessário criar um construtor que recebe o WebDriver como parâmetro, da seguinte maneira:
+   se a classe se chama public Class Desconto{}
+   então o construtor vai ser:
+       WebDriver driver;
+       public Desconto(WebDriver driver){ this.driver = new ChromeDriver;}
+
+5. Dica de melhoria, costumava usar um metodo que realizava scroll até o elemento está disponível e depois usava um método
+ que clica no botão, como por exemplo:
+        public void ScroolDown() throws InterruptedException {
+            JavascriptExecutor jse = (JavascriptExecutor) driver; // o selenium permite rodar códigos Js direto no navegador, e aqui trasnformamos o driver em um executor Js para mandar comandos JS
+            jse.executeScript("window.scrollTo(0,10000)"); // 0 é o eixo horizontal, significa que não irá mover na horizontal e 10000 é o eixo  vertical, faz a página rolar para baixo, garantindo que o campo esteja visível
+            Thread.sleep(2000);
+        }
+
+        private By submit = By.id("btnRegister");
+        public void submitRegister(){
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement clicksubmit = wait.until(ExpectedConditions.elementToBeClickable(submit));
+            clicksubmit.click();
+        }
+
+
+Como uma opção de melhoria, em vez de usar um scrool fixo, é melhro fazer o scroll até o elemto com scrollIntoVie
+combinando com o WebDriverWait. Juntando os dois métodos em um só, a automação acaba ficando mais estável
+
+6. utilidade importante: Scroll fixo
+     public void ScroolDown() throws InterruptedException {
+         JavascriptExecutor jse = (JavascriptExecutor) driver; // o selenium permite rodar códigos Js direto no navegador, e aqui trasnformamos o driver em um executor Js para mandar comandos JS
+         jse.executeScript("window.scrollTo(0,10000)"); // 0 é o eixo horizontal, significa que não irá mover na horizontal e 10000 é o eixo  vertical, faz a página rolar para baixo, garantindo que o campo esteja visível
+         Thread.sleep(2000);
+     }
+
+
+7. Em steps que utilizam o scroll até encontrar algum elemento, tenho que introduzir ao lado do método "throws InterruptedException";
