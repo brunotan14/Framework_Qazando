@@ -6,15 +6,15 @@ Este projeto tem como objetivo automatizar testes funcionais no site [Automation
 
 ## 🚀 Tecnologias Utilizadas
 
-| Tecnologia | Descrição |
-|-------------|------------|
-| **Java 17+** | Linguagem principal de desenvolvimento |
+| Tecnologia             | Descrição |
+|------------------------|------------|
+| **Java 24**            | Linguagem principal de desenvolvimento |
 | **Selenium WebDriver** | Framework de automação de aplicações web |
-| **Cucumber** | Ferramenta que implementa o padrão BDD |
-| **Gherkin** | Linguagem usada para descrever os cenários de teste |
-| **JUnit** | Executor dos testes automatizados |
-| **Maven** | Gerenciador de dependências e build |
-| **IntelliJ IDEA** | IDE utilizada para desenvolvimento e execução dos testes |
+| **Cucumber**           | Ferramenta que implementa o padrão BDD |
+| **Gherkin**            | Linguagem usada para descrever os cenários de teste |
+| **JUnit**              | Executor dos testes automatizados |
+| **Maven**              | Gerenciador de dependências e build |
+| **IntelliJ IDEA**      | IDE utilizada para desenvolvimento e execução dos testes |
 
 ---
 
@@ -121,13 +121,15 @@ Executar o ficheiro RunCucumberTest.java.
 Verificar o resultado no console ou no relatório HTML.
 
 🧩 Via Maven (Terminal)
-mvn test
+Para visualizar as execuções: mvn test -Dtest=RunCucumberTest -Dbrowser=chrome  
+Para rodar no modo Headless: mvn test -Dtest=RunCucumberTest -Dbrowser=chrome-ci
 
 📊 Relatórios de Teste
 
 Após a execução dos testes, o relatório HTML é gerado automaticamente na pasta:
+mvn test cluecumber:report-reporting
 
-target/cucumber-reports/index.html
+target/cucumber-reports/index.html(onde o relátorio é gerado)
 
 🔍 Como abrir o relatório no IntelliJ:
 
