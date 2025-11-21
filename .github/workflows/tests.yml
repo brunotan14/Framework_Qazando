@@ -13,9 +13,11 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      # clonar projeto
       - name: Clonar o projeto
         uses: actions/checkout@v5
 
+      # instalar o java
       - name: Install Java
         uses: actions/setup-java@v4
         with:
@@ -23,22 +25,26 @@ jobs:
           distribution: "temurin"
           cache: maven
 
-      - name: Install Google Chrome (Windows)
+      # instalar Google Chrome (Windows)
+      - name: Install latest Google Chrome
         uses: browser-actions/setup-chrome@latest
 
-      - name: Install matching ChromeDriver
-        uses: browser-actions/setup-chromedriver@latest
-        with:
-          chrome-version: latest
+      # instalar ChromeDriver compatível
+      - name: Setup ChromeDriver
+        uses: nanasess/setup-chromedriver@v2
 
+      # executar testes
       - name: Run tests
         run: mvn test -Dtest=RunCucumberTest -Dbrowser=chrome-ci
 
+      #Gerar os relatórios
       - name: Gerar relatório
         run: mvn cluecumber-report:reporting
 
+      #Arquivar relatório
       - name: Arquivar relatório
         uses: actions/upload-artifact@v4
         with:
           name: Report-tests
           path: "**/target/"
+
