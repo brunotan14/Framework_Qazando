@@ -27,9 +27,7 @@ jobs:
 
       # instalar Google Chrome (Windows)
       - name: Install latest Google Chrome
-        run: |
-          powershell -Command "Invoke-WebRequest https://dl.google.com/chrome/install/latest/chrome_installer.exe -OutFile chrome_installer.exe"
-          start /wait chrome_installer.exe /silent /install
+        uses: browser-actions/setup-chrome@latest
 
       # instalar ChromeDriver compatível
       - name: Setup ChromeDriver
