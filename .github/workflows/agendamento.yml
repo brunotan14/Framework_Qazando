@@ -1,9 +1,9 @@
-name: Smoke Test - PR
+name: Testes agendados
 
 on:
-  pull_request:
-    branches:
-      - main
+  schedule:
+    cron: " 30 10 * 12 *"
+
 
 jobs:
   RunTest:
