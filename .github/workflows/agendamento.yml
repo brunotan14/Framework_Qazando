@@ -2,7 +2,7 @@ name: Testes agendados
 
 on:
   schedule:
-    cron: "30 10 * 12 *"
+  -  cron: "0/5 * * * 1-5"
 
 
 jobs:
