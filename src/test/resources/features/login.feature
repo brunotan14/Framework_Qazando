@@ -25,7 +25,7 @@
 
    Exemplos:
      | email          | senha     | message          | nome                            |
-     |                | 123456    | E-mail inválido. | Login campo email vazio         |
+     |                | 123456    | E-mail inválido. | Login campo email vazio.        |
      | 123@.com       | 123456    | E-mail inválido. | Login campo email despadronizado|
      |user@gmail.com  |           | Senha inválida.  | Login campo senha vazio.        |
      |user@hotmail.com| 123       | Senha inválida.  | Login campo senha menor que 6   |

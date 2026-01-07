@@ -1,5 +1,6 @@
 #language: pt
 
+ @cadastro
 Funcionalidade: Cadastro de usuário
     Eu usuário da web
     Quero me cadastrar no site da qazando

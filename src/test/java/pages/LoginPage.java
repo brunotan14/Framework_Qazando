@@ -21,7 +21,7 @@ public class LoginPage extends RunCucumberTest {
     private By loginsubmitt = By.id("btnLogin");
 
     public void enterQazando(){
-        String browser = System.getProperty("browser");
+        String browser = System.getProperty("browser"); // passagme do browser no modo headless como parametro
         getDriver(browser).get(URL);
     }
     public void LoginAcess(){
